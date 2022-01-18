@@ -4,7 +4,7 @@ import "components/DayListItem.scss";
 
 export default function DayListItem(props) {
   // for displaying number of available interview spots
-  const checkSpots = function(spots) {
+  const formatSpots = function(spots) {
     if (spots === 0) {
       return "no spots remaining";
     }
@@ -27,7 +27,7 @@ export default function DayListItem(props) {
       className={dayClass}
     >
       <h2 className="text--regular">{props.name}</h2>
-      <h3 className="text--light">{checkSpots(props.spots)}</h3>
+      <h3 className="text--light">{formatSpots(props.spots)}</h3>
     </li>
   );
 }
