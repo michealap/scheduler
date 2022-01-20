@@ -4,7 +4,7 @@ import "./styles.scss";
 export default function Appointment(props) {
   return (
     <article className="Appointment">
-      Appointment
+      {props.time}
     </article>
   )
 }
