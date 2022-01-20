@@ -12,9 +12,10 @@ import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
 
 import Appointment from "components/Appointment/index";
-import Header from "components/Appointment/Header"
-import Empty from "components/Appointment/Empty"
-import Show from "components/Appointment/Show"
+import Header from "components/Appointment/Header";
+import Empty from "components/Appointment/Empty";
+import Show from "components/Appointment/Show";
+import Confirm from "components/Appointment/Confirm";
 
 //Test Button component behaviour
 storiesOf("Button", module)
@@ -160,5 +161,12 @@ storiesOf("Button", module)
       onEdit={action("onEdit")}
       onDelete={action("onDelete")}
       interview={{ student: "Lydia Miller-Jones", interviewer }}
+    />
+  ))
+  .add("Confirm", () => (
+    <Confirm
+      message="Delete the appointment?"
+      onConfirm={action("onConfirm")}
+      onCancel={action("onCancel")}
     />
   ))
