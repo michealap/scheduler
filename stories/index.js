@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
@@ -19,6 +19,7 @@ import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
+
 //Test Button component behaviour
 storiesOf("Button", module)
   .addParameters({
@@ -81,7 +82,7 @@ storiesOf("Button", module)
     <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
   ));
 
-    //Test InterviewerListItem component behaviour
+  //Test InterviewerListItem component behaviour
     const interviewer = {
       id: 1,
       name: "Sylvia Palmer",
@@ -116,7 +117,7 @@ storiesOf("Button", module)
         />
       ));
 
-      //test behaviour of InterviewerList component
+    //test behaviour of InterviewerList component
       const interviewers = [
         { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
         { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
@@ -125,7 +126,7 @@ storiesOf("Button", module)
         { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
       ];
       
-      storiesOf("InterviewerList", module)
+  storiesOf("InterviewerList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   })
@@ -146,14 +147,30 @@ storiesOf("Button", module)
       onChange={action("setInterviewer")}
     />
   ));
-  //test Appointment component behaviour
 
+  //test Appointment component behaviour
   storiesOf("Appointment", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
   .add("Appointment", () => <Appointment />)
   .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="4pm" />
+      <Appointment time="5pm" />
+    </Fragment>
+  ))
+  .add("Appointment Booked", () => (
+    <Fragment>
+      <Appointment
+        id={1}
+        time="4pm"
+        interview={{ student: "Lydia Miller-Jones", interviewer }}
+      />
+      <Appointment time="5pm" />
+    </Fragment>
+  ))
   .add("Header", () => <Header time="12pm" />)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
   .add("Show", () => (
@@ -185,8 +202,8 @@ storiesOf("Button", module)
   ))
   .add("Edit", () => (
     <Form
-      student="Mimi"
-      interviewer={2}
+      student=""
+      interviewer={interviewer.id}
       interviewers={interviewers}
       onSave={action("onSave")}
       onCancel={action("onCancel")}
