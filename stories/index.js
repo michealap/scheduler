@@ -17,7 +17,7 @@ import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
-
+import Error from "components/Appointment/Error";
 //Test Button component behaviour
 storiesOf("Button", module)
   .addParameters({
@@ -172,3 +172,6 @@ storiesOf("Button", module)
     />
   ))
   .add("Status", () => <Status message="Deleting" />)
+  .add("Error", () => (
+    <Error message="Could not delete message" onClose={action("onClose")} />
+  ))
