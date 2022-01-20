@@ -1,5 +1,5 @@
 import React from "react";
-
+// allows a user to see an existing appointment
 export default function Show(props) {
   return (
 <main className="appointment__card appointment__card--show">
