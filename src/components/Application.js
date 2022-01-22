@@ -43,6 +43,7 @@ const appointments = [
   }
 ];
 export default function Application(props) {
+  const [day, setDay] = useState('Monday');
   const [days, setDays] = useState([]);
   const schedule = appointments.map((appointment) => {
     return (
@@ -71,8 +72,8 @@ export default function Application(props) {
       <nav className="sidebar__menu">
       <DayList
         days={days}
-        value={days}
-        onChange={setDays}
+        value={day}
+        onChange={setDay}
       />
 
       </nav>
