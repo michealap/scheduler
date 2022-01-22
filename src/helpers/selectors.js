@@ -1,4 +1,4 @@
-export default function getAppointmentsForDay(state, day) {
+function getAppointmentsForDay(state, day) {
       // find the object in our state.days array whose name matches the provided day, access that specific days appointment array
       const daysArray = state.days.filter(thisDay => thisDay.name === day);
     
@@ -18,3 +18,17 @@ export default function getAppointmentsForDay(state, day) {
       }
       return dayAppts;
 }
+
+function getInterview(state, interview) {
+  if (interview === null || !interview) {
+    return null;
+  }
+
+  for (const interviewer of Object.values(state.interviewers)) {
+    if (interview.interviewer === interviewer.id) {
+      return { student: interview.student, interviewer: interviewer };
+    }
+  }
+}
+
+module.exports = { getAppointmentsForDay, getInterview};
