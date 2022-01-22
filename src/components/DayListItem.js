@@ -4,6 +4,7 @@ import "components/DayListItem.scss";
 
 export default function DayListItem(props) {
   // for displaying number of available interview spots
+  const {spots, name, selected, setDay} = props;
   const formatSpots = function(spots) {
     if (spots === 0) {
       return "no spots remaining";
@@ -16,18 +17,18 @@ export default function DayListItem(props) {
 
   // add class names based on props
   const dayClass = classNames("day-list__item", {
-    "day-list__item--selected": props.selected,
-    "day-list__item--full": props.spots === 0
+    "day-list__item--selected": selected,
+    "day-list__item--full": spots === 0
   });
 
   return (
     <li
       data-testid="day"
-      onClick={() => props.setDay(props.name)}
+      onClick={() => setDay(name)}
       className={dayClass}
     >
-      <h2 className="text--regular">{props.name}</h2>
-      <h3 className="text--light">{formatSpots(props.spots)}</h3>
+      <h2 className="text--regular">{name}</h2>
+      <h3 className="text--light">{formatSpots(spots)}</h3>
     </li>
   );
 }
