@@ -86,7 +86,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message="Deleting"/>}
       {mode === EDIT && (
         <Form
-          name={props.interview.student}
+          student={props.interview.student}
           interviewers={props.interviewers}
           interviewer={props.interview.interviewer.id}
           onSave={save}
