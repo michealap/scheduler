@@ -19,7 +19,7 @@ export default function Form(props) {
   };
 
   function validate() { 
-    if (student === "") {//check if user entered a name
+    if (!student) {//check if user entered a name
       setError("Student name cannot be blank");
       return;
     }
@@ -36,7 +36,7 @@ export default function Form(props) {
     <form onSubmit={event => event.preventDefault()} autoComplete="off">
       <input
         className="appointment__create-input text--semi-bold"
-        name="name"
+        student="student"
         type="text"
         placeholder="Enter Student Name"
         value={student}
