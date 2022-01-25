@@ -23,13 +23,12 @@ Scheduler is a Single Page App where:
 !["Display edit changes"](https://github.com/michealap/scheduler/blob/master/public/docs/1PM-updated.PNG?raw=true)
 
 ## Technical Specifications
--React
--Webpack, Babel
--Axios
--Storybook, Webpack Dev Server, Jest, Testing Library
--The Scheduler client application created using Create React App. 
--Express is the basis for the Scheduler API server application. https://github.com/michealap/scheduler-api
-
+- React
+- Webpack, Babel
+- Axios
+- Storybook, Webpack Dev Server, Jest, Testing Library
+- The Scheduler client application created using Create React App. 
+- Express is the basis for the Scheduler API server application => https://github.com/michealap/scheduler-api
 Both servers run concurrently; requests are proxied from the Webpack development server to the API server.
 
 ## Setup
