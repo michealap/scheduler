@@ -48,7 +48,8 @@ export default function Appointment(props) {
 
   function cancel() {//delete appoinment
     transition(DELETING,true);
-    props.cancelInterview(props.id)//send req to db for delete
+    props
+    .cancelInterview(props.id)//send req to db for delete
     .then(() => transition(EMPTY)) //take user to empty when success
     .catch(err => transition(ERROR_DELETE, true));
   }
@@ -70,7 +71,6 @@ export default function Appointment(props) {
      {mode === CREATE && (
         <Form
           interviewers={props.interviewers}
-          bookInterview={props.bookInterview}
           onSave={save}
           onCancel={() => back()}
         />
@@ -83,13 +83,12 @@ export default function Appointment(props) {
         onCancel={() => back()}
         />
         )}
-        {mode === DELETING && <Status message="Deleting"/>}
-        {mode === EDIT && (
+      {mode === DELETING && <Status message="Deleting"/>}
+      {mode === EDIT && (
         <Form
           name={props.interview.student}
           interviewers={props.interviewers}
           interviewer={props.interview.interviewer.id}
-          bookInterview={props.bookInterview}
           onSave={save}
           onCancel={() => transition(SHOW)}
         />
