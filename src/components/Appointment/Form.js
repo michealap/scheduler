@@ -18,13 +18,13 @@ export default function Form(props) {
     props.onCancel();
   };
 
-  function formCheck() { 
+  function validate() { 
     if (student === "") {//check if user entered a name
       setError("Student name cannot be blank");
       return;
     }
     if (!interviewer) {//check if user selected an interviewer
-      setError("Please select a interviewer");
+      setError("Please select an interviewer");
       return;
     }
     setError("");//clear error
@@ -45,6 +45,7 @@ export default function Form(props) {
         }}
       />
     </form>
+    <section className="appointment__validation">{error}</section>
     <InterviewerList 
        interviewers={props.interviewers}
        value={interviewer}
@@ -55,7 +56,7 @@ export default function Form(props) {
     <section className="appointment__actions">
       <Button danger onClick={cancel}>
         Cancel</Button>
-      <Button confirm onClick={() => formCheck()}>Save</Button>
+      <Button confirm onClick={() => validate()}>Save</Button>
     </section>
   </section>
 </main>
