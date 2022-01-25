@@ -6,6 +6,7 @@ Scheduler is a Single Page App where:
 - User will be shown the remaining spots for the day
 - User can book, edit and cancel appointments between 12pm to 5pm
 - User will be shown error message based on their input or selection
+- User is shown a status indicator while asynchronous operations are in progress.
 - User will be shown the updated spots after booking without a page refresh.
 
 ## Final Product 
@@ -20,6 +21,16 @@ Scheduler is a Single Page App where:
 ### Edit functionality
 !["Display form"](https://github.com/michealap/scheduler/blob/master/public/docs/edit-feature.PNG?raw=true)
 !["Display edit changes"](https://github.com/michealap/scheduler/blob/master/public/docs/1PM-updated.PNG?raw=true)
+
+## Technical Specifications
+-React
+-Webpack, Babel
+-Axios
+-Storybook, Webpack Dev Server, Jest, Testing Library
+-The Scheduler client application created using Create React App. 
+-Express is the basis for the Scheduler API server application. https://github.com/michealap/scheduler-api
+
+Both servers run concurrently; requests are proxied from the Webpack development server to the API server.
 
 ## Setup
 
