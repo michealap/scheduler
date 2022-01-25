@@ -22,14 +22,33 @@ export default function Application(props) {
     return (
       <Appointment
         key={appointment.id}
-        {...appointment}
+        {...appointment} //id and time 
         interview={getInterview(state, appointment.interview)}
         interviewers={interviewers}
         bookInterview={bookInterview}
         cancelInterview={cancelInterview}
       />
-    )
-  });
+      )
+    });
+    useEffect(() => {
+      Promise.all([
+        axios.get("http://localhost:8001/api/days"),
+        axios.get("http://localhost:8001/api/appointments"),
+        axios.get("http://localhost:8001/api/interviewers")
+      ])
+        .then(response => {
+          console.log(response);
+          setState(prev => ({
+            ...prev,
+            days: response[0].data,
+            appointments: response[1].data,
+            interviewers: response[2].data
+          }));
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }, []);
   function bookInterview(id, interview) {
     console.log(id, interview);
     const appointment = {
@@ -40,9 +59,11 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-    return axios.put(`api/appointments/${id}`, appointment).then(() => {
-      setState(prev => ({ ...prev, appointments }));
-    });
+    return (axios.put(`/api/appointments/${id}`, appointment)
+    .then(() => {
+      setState({...state, appointments: appointments });
+    })
+    )
   }
 
   function cancelInterview(id) {
@@ -60,27 +81,6 @@ export default function Application(props) {
       })
     )
   }
-
-  useEffect(() => {
-    Promise.all([
-      axios.get("http://localhost:8001/api/days"),
-      axios.get("http://localhost:8001/api/appointments"),
-      axios.get("http://localhost:8001/api/interviewers")
-    ])
-      .then(response => {
-        console.log(response);
-        setState(prev => ({
-          ...prev,
-          days: response[0].data,
-          appointments: response[1].data,
-          interviewers: response[2].data
-        }));
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }, []);
-
   return (
     <main className="layout">
       <section className="sidebar">
