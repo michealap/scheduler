@@ -23,6 +23,7 @@ export default function Form(props) {
       setError("Student name cannot be blank");
       return;
     }
+    //this check is not covered in Form.test
     if (!interviewer) {//check if user selected an interviewer
       setError("Please select an interviewer");
       return;
@@ -57,7 +58,7 @@ export default function Form(props) {
     <section className="appointment__actions">
       <Button danger onClick={cancel}>
         Cancel</Button>
-      <Button confirm onClick={() => validate()}>Save</Button>
+      <Button confirm onClick={validate}>Save</Button>
     </section>
   </section>
 </main>
