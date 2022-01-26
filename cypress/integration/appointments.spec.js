@@ -3,7 +3,7 @@ describe("Appointments", () => {
     cy.request("GET", "/api/debug/reset");
 
     cy.visit("/");
-    
+
     cy.contains("Monday");
   });
 
@@ -19,5 +19,23 @@ describe("Appointments", () => {
 
     cy.contains(".appointment__card--show", "Lydia Miller-Jones");
     cy.contains(".appointment__card--show", "Sylvia Palmer");
+  });
+
+  it("should edit an interview", () => {
+    cy.get("[alt=Edit]")
+      .invoke("show")
+      .first()
+      .click();
+
+    cy.get("[data-testid=student-name-input]")
+      .clear()
+      .type("Michie Lynn");
+
+    cy.get("[alt='Tori Malcolm']").click();
+
+    cy.contains("Save").click();
+
+    cy.contains(".appointment__card--show", "Michie Lynn");
+    cy.contains(".appointment__card--show", "Tori Malcolm");
   });
 });
