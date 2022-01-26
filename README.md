@@ -28,8 +28,9 @@ Scheduler is a Single Page App where:
 - Axios
 - Storybook, Webpack Dev Server, Jest, Testing Library
 - The Scheduler client application created using Create React App. 
-- Express is the basis for the Scheduler API server application => https://github.com/michealap/scheduler-api
-Both servers run concurrently; requests are proxied from the Webpack development server to the API server.
+- Express is the basis for the Scheduler API server application => https://github.com/michealap/scheduler-api 
+- Optional: For a test scheduler(2 days), use command ```npm run test:server ``` otherwise ```npm start```
+- Both servers run concurrently; requests are proxied from the Webpack development server to the API server.
 
 ## Setup
 
